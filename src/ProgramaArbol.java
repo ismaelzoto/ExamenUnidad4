@@ -4,6 +4,7 @@ public class ProgramaArbol {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+		/*
 		//5.-Construyendo un arbol de busqueda con las siguintes claves
 		ArbolAVL construirarbol = new ArbolAVL();
 		
@@ -25,6 +26,8 @@ public class ProgramaArbol {
 		construirarbol.inOrden(construirarbol.obtenerRaiz());
 		System.out.print("\nPostorden: ");
 		construirarbol.postOrden(construirarbol.obtenerRaiz());
+		System.out.println ("\nCantidad de nodos en el árbol: "+ construirarbol.cantidad() );
+		*/
 		
 		ArbolAVL arbolito = new ArbolAVL();
 		//insertando nodos
@@ -38,15 +41,27 @@ public class ProgramaArbol {
         arbolito.insertar(2);
         arbolito.insertar(7);
         arbolito.insertar(15);
-        System.out.print("\n\nRecorrido en Preorden: ");
-		arbolito.preOrden(arbolito.obtenerRaiz());
-        System.out.println ("\nCantidad de nodos en el árbol: "+arbolito.cantidad());
+        
+        System.out.println ("\nCantidad de nodos en el árbol: " + arbolito.cantidad());
         System.out.print("Altura del arbol: ");
         System.out.println(arbolito.retornarAltura());  
-        System.out.print("\n\nRecorrido en Inorden Iterativo: " );
-        arbolito.inordenIterativo(arbolito.obtenerRaiz());
+    	
+        System.out.print("\nRecorrido en Pre-orden:          ");
+   		arbolito.preOrden(arbolito.obtenerRaiz());
+   		System.out.print("\nRecorrido en Pre-orden Iterativo:" );
+        arbolito.PreordenIterativo(arbolito.obtenerRaiz());
         
-
+        System.out.print("\n\nRecorrido en In-orden:          ");
+   		arbolito.inOrden(arbolito.obtenerRaiz());
+   		System.out.print("\nRecorrido en In-orden Iterativo:" );
+        arbolito.inordenIterativo(arbolito.obtenerRaiz());
+   		  	
+   		System.out.print("\n\nRecorrido en Post-orden:          ");
+   		arbolito.postOrden(arbolito.obtenerRaiz());
+   		System.out.print("\nRecorrido en Post-orden Iterativo:" );
+        arbolito.PostordenIterativo(arbolito.obtenerRaiz());
+   		
+    
 	}
 
 }

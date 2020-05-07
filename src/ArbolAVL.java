@@ -3,8 +3,8 @@ import java.util.Stack;
 public class ArbolAVL {
 
 	
-    private int cantida;
-    private int altura;
+    	private int cantida;
+    	private int altura;
 	private NodoArbolAVL raiz;
 
 	public ArbolAVL(){
@@ -119,14 +119,6 @@ public class ArbolAVL {
 			}
 		}
 		//Recorridos
-		//Metodo para recorrer el arbol inOrden
-		public void inOrden(NodoArbolAVL r){
-			if (r!=null){
-				inOrden(r.hijoIzquierdo);
-				System.out.print(r.dato+", ");
-				inOrden(r.hijoDerecho);		
-			}
-		}
 		//Metodo para recorrer el arbol PreOrden
 		public void preOrden(NodoArbolAVL r){
 			if (r!=null){
@@ -135,6 +127,15 @@ public class ArbolAVL {
 				preOrden(r.hijoDerecho);		
 			}
 		}
+		//Metodo para recorrer el arbol inOrden
+		public void inOrden(NodoArbolAVL r){
+			if (r!=null){
+				inOrden(r.hijoIzquierdo);
+				System.out.print(r.dato+", ");
+				inOrden(r.hijoDerecho);		
+			}
+		}
+		
 		//Metodo para recorrer el arbol PostOrden
 		public void postOrden(NodoArbolAVL r){
 			if (r!=null){
@@ -143,43 +144,85 @@ public class ArbolAVL {
 				System.out.print(r.dato+", ");
 			}
 		}
-		//2.-Implementar una Funcion NO Recursiva para Recorrer un Arbol en Inorden
-		public void inordenIterativo(NodoArbolAVL r){
+		
+		//2.-Implementar una Funcion NO Recursiva para Recorrer un Arbol en Pre-orden
+		public void PreordenIterativo(NodoArbolAVL r){
 			 
 		    Stack<NodoArbolAVL> pila = new Stack<NodoArbolAVL>();
 		    NodoArbolAVL aux = r;
 		 
 		    do{
-		        if(!pila.empty() && aux == null){
-		            System.out.print(pila.peek().dato+", ");
-		        }
-		 
 		        if(aux != null){
-		            pila.push(aux);
-		            aux = aux.hijoIzquierdo;
+		        	System.out.print(aux.dato+", ");
+		        	pila.push(aux);
+		        	aux = aux.hijoIzquierdo;
 		        }else if(!pila.empty()){
-		            aux = pila.peek();
-		            pila.pop();
-		            aux = aux.hijoDerecho;
+		        	aux = pila.peek();
+		        	pila.pop();
+		        	aux = aux.hijoDerecho;
 		        }
-		        
+
 		    }while(!pila.empty() || aux != null);
 		}
-		//3.-Metodo Usando una Funcion Recursiva que encuentra el numero de nodos de un arbol
-		private void cantidad(NodoArbolAVL recorre) {
-			if (recorre!=null) {
-				cantida++;
-				cantidad(recorre.hijoIzquierdo);
-				cantidad(recorre.hijoDerecho);
-			}
-		}
+		//2.-Implementar una Funcion NO Recursiva para Recorrer un Arbol en In-orden
+				public void inordenIterativo(NodoArbolAVL r){
+					 
+				    Stack<NodoArbolAVL> pila = new Stack<NodoArbolAVL>();
+				    NodoArbolAVL aux = r;
+				 
+				    do{
+				        //if(!pila.empty() && aux == null){ System.out.print(pila.peek().dato+", "); }
+				 
+				        if(aux != null){
+				            pila.push(aux);
+				            aux = aux.hijoIzquierdo;
+				        }else if(!pila.empty()){
+				            aux = pila.peek();
+				            pila.pop();
+					    System.out.print(aux.dato+", ");
+				            aux = aux.hijoDerecho;
+				        }
+				        
+				    }while(!pila.empty() || aux != null);
+				}
+	     //2.-Implementar una Funcion NO Recursiva para Recorrer un Arbol en Post-orden
+				public void PostordenIterativo(NodoArbolAVL r){
 
-		public int cantidad() {
-			cantidad(raiz);
-			return cantida;
-		}
-		//4.-Metodo Usando una Funcion Recursiva que encuentra la altura de un arbol binario 
-		private void retornarAltura(NodoArbolAVL recorre,int nivel){
+					Stack<NodoArbolAVL> pila = new Stack<NodoArbolAVL>();
+					NodoArbolAVL aux = r;	
+					
+					   do{
+					           if (pila.empty()){System.out.print(aux.dato+", "); }	
+				   	
+						   if(aux != null){
+						   pila.push(aux);
+					           aux = aux.hijoIzquierdo;
+					       	   }else if(!pila.empty()){
+					    	   aux = pila.peek(); 
+						   pila.pop();
+					           aux = aux.hijoDerecho; }						     
+
+					    }while(!pila.empty() || aux != null);	
+											   
+					}   
+				
+				//3.-Metodo Usando una Funcion Recursiva que encuentra el numero de nodos de un arbol
+				private void cantidad(NodoArbolAVL recorre) {
+					if (recorre!=null) {
+						cantida++;
+						cantidad(recorre.hijoIzquierdo);
+						cantidad(recorre.hijoDerecho);
+					}
+				}
+
+				public int cantidad() {
+					cantidad(raiz);
+					return cantida;
+
+
+				}
+				//4.-Metodo Usando una Funcion Recursiva que encuentra la altura de un arbol binario 
+				private void retornarAltura(NodoArbolAVL recorre,int nivel){
 			if (recorre != null) {    
 				retornarAltura (recorre.hijoIzquierdo,nivel+1);
 				if (nivel>altura)
@@ -188,10 +231,11 @@ public class ArbolAVL {
 			}
 		}
 
-		public  int retornarAltura () {
-			retornarAltura (raiz,1);
+		public  int retornarAltura() {
+			retornarAltura(raiz,1);
 			return altura;
-		}  
+		} 
+		
 }
 
 
