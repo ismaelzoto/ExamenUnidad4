@@ -46,22 +46,24 @@ public class ProgramaArbol {
         System.out.print("Altura del arbol: ");
         System.out.println(arbolito.retornarAltura());  
     	
-        System.out.print("\nRecorrido en Pre-orden:          ");
+        System.out.print("\nRecorrido en Pre-orden:           ");
    		arbolito.preOrden(arbolito.obtenerRaiz());
-   		System.out.print("\nRecorrido en Pre-orden Iterativo:" );
+   		System.out.print("\nRecorrido en Pre-orden Iterativo: " );
         arbolito.PreordenIterativo(arbolito.obtenerRaiz());
         
-        System.out.print("\n\nRecorrido en In-orden:          ");
+        System.out.print("\n\nRecorrido en In-orden:           ");
    		arbolito.inOrden(arbolito.obtenerRaiz());
-   		System.out.print("\nRecorrido en In-orden Iterativo:" );
+   		System.out.print("\nRecorrido en In-orden Iterativo: " );
         arbolito.inordenIterativo(arbolito.obtenerRaiz());
    		  	
-   		System.out.print("\n\nRecorrido en Post-orden:          ");
+   		System.out.print("\n\nRecorrido en Post-orden:           ");
    		arbolito.postOrden(arbolito.obtenerRaiz());
-   		System.out.print("\nRecorrido en Post-orden Iterativo:" );
+   		System.out.print("\nRecorrido en Post-orden Iterativo: " );
         arbolito.PostordenIterativo(arbolito.obtenerRaiz());
+
+		System.out.print("\nRecorrido en Post-orden IterativoB: " );
+        arbolito.PostordenIterativoB(arbolito.obtenerRaiz());
    		
-    
 	}
 
 }

@@ -190,22 +190,37 @@ public class ArbolAVL {
 
 					Stack<NodoArbolAVL> pila = new Stack<NodoArbolAVL>();
 					NodoArbolAVL aux = r;	
-					
-					   do{
-					           if (pila.empty()){System.out.print(aux.dato+", "); }	
-				   	
-						   if(aux != null){
-						   pila.push(aux);
-					           aux = aux.hijoIzquierdo;
-					       	   }else if(!pila.empty()){
-					    	   aux = pila.peek(); 
-						   pila.pop();
-					           aux = aux.hijoDerecho; }						     
-
-					    }while(!pila.empty() || aux != null);	
-											   
-					}   
+					NodoArbolAVL pre = r;
 				
+				if(aux!=null) 
+  				pila.push(aux); 
+//System.out.println("sysout"+pila.isEmpty());
+ 					while(!pila.isEmpty()){ 
+   			aux = pila.peek(); if(aux==pre || aux==pre.hijoIzquierdo || aux==pre.hijoDerecho){
+				if(aux.hijoIzquierdo!=null){ pila.push(aux.hijoIzquierdo); } 
+				else if(aux.hijoDerecho!=null){ pila.push(aux.hijoDerecho); } 
+					if(aux.hijoIzquierdo==null && aux.hijoDerecho==null){ System.out.print(pila.pop().dato+", "); } }
+					else if(pre==aux.hijoIzquierdo){ 
+						if(aux.hijoDerecho!=null){ pila.push(aux.hijoDerecho); }
+						else if(aux.hijoDerecho==null){ System.out.print(pila.pop().dato+", "); } }
+							else if(pre==aux.hijoDerecho){
+							System.out.print(pila.pop().dato+", "); } pre=aux; } }
+
+				//2.-Implementar una Funcion NO Recursiva para Recorrer un Arbol en Post-orden
+				public void PostordenIterativoB(NodoArbolAVL r){
+						
+						if (r == null) { return; } 
+
+					Stack<NodoArbolAVL> pila = new Stack<NodoArbolAVL>();
+					NodoArbolAVL aux = r;
+pila.push(aux); 
+while (!pila.isEmpty()) { NodoArbolAVL next = pila.peek(); 
+if (next.hijoDerecho == aux || next.hijoIzquierdo == aux || (next.hijoIzquierdo == null && next.hijoDerecho == null)) { 
+pila.pop(); System.out.print(next.dato+", "); aux = next; } 
+else { if (next.hijoDerecho != null) { pila.push(next.hijoDerecho); } if (next.hijoIzquierdo != null) { pila.push(next.hijoIzquierdo); } } }
+
+				}
+
 				//3.-Metodo Usando una Funcion Recursiva que encuentra el numero de nodos de un arbol
 				private void cantidad(NodoArbolAVL recorre) {
 					if (recorre!=null) {
